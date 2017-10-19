@@ -13,7 +13,7 @@ var PORT = process.env.PORT || 3000;
 mongoose.Promise = Promise;
 
 //require the model
-//var Article = require('./model.js');
+var Article = require('./scrapeModel.js');
 
 //grabbing an instance of express
 var app = express();
