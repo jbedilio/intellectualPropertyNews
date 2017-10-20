@@ -2,18 +2,16 @@
 var express = require('express');
 var bp = require('body-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 var request = require('request');
 var cheerio = require('cheerio');
-var mongoose = require('mongoose');
-
-//setting a port
-var PORT = process.env.PORT || 3000;
 
 //setting Mongoose to leverage built in JS ES6 Promises
 mongoose.Promise = Promise;
 
-//require the model
-var Article = require('./scrapeModel.js');
+//require the models
+var Article = require('./../models/ArticleModel.js');
+var Note = require('./../models/NoteModel.js');
 
 //grabbing an instance of express
 var app = express();
