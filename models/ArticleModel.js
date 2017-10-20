@@ -8,13 +8,17 @@ var ArticleSchema = new Schema({
         type: String,
         required: true
     },
-    message: {
+    link: {
         type: String,
         required: true
     },
     created: {
         type: Date,
         default: Date.now
+    },
+    note: {
+        type: Schema.Types.ObjectId,
+        ref: 'Note'
     }
 });
 //setting the var Article to hold the mongoose model & schema
