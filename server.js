@@ -10,8 +10,8 @@ var cheerio = require('cheerio');
 mongoose.Promise = Promise;
 
 //require the models
-var Article = require('./../models/ArticleModel.js');
-var Note = require('./../models/NoteModel.js');
+var Article = require('./models/ArticleModel.js');
+var Note = require('./models/NoteModel.js');
 
 //grabbing an instance of express
 var app = express();
@@ -38,7 +38,9 @@ var routes = require('./controllers/scrapeController.js');
 
 app.use('/', routes);
 
-app.listen(PORT);
+app.listen(3000, () => {
+    console.log('In the hizzy!');
+});
 
 
 
