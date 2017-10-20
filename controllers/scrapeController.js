@@ -7,4 +7,8 @@ var router = express.Router();
 var Article = require('./../models/ArticleModel.js');
 var Note = require('./../models/NoteModel.js');
 
+router.get('/', (req, res) => {
+    res.send('hello fuckers');
+})
+
 module.exports = router;

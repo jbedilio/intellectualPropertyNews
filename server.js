@@ -28,6 +28,14 @@ app.use(bp.json());
 mongoose.connect('mongodb://localhost/newsScraperdb');
 var db = mongoose.connection;
 
+db.on('error', (error) => {
+    console.log('Mongoose error: ', error);
+});
+
+db.once('open', () => {
+    console.log('Mongoose in the hizzy!');
+});
+
 //set handlebars
 var exphbs = require('express-handlebars');
 
@@ -38,9 +46,7 @@ var routes = require('./controllers/scrapeController.js');
 
 app.use('/', routes);
 
-app.listen(3000, () => {
-    console.log('In the hizzy!');
-});
+app.listen(3000);
 
 
 
