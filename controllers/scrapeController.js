@@ -16,9 +16,6 @@ var Note = require('./../models/NoteModel.js');
 
 router.get('/', (req, res) => {
     Article.find({}, (err, doc) => {
-        // var hbsObject = {
-        //     result: doc
-        // };
         res.render('index', {
             result: doc
         });
@@ -86,7 +83,7 @@ router.post('/article/delete/:id', (req, res) => {
     res.redirect('/');
 });
 
-router.get('/article/note/:id', (req, res) => {
+router.get('/article/save/:id', (req, res) => {
     Article.find({_id: req.params.id}, (err, doc) => {
         if (err){
             console.log(err);
@@ -102,6 +99,24 @@ router.get('/article/note/:id', (req, res) => {
         }
     });
 });
+
+router.post('/article/note/:id', (req, res) => {
+    var entry = new Note(req.body);
+    entry.save(function(error,doc){
+        if (err) {
+            console.log('err: ', err);
+        } else {
+            Article.findOneAndUpdate({'_id': req.params.id}, {$push: {'note': doc._id}}, {new: true}, function(err, data){
+                if (err) {
+                    console.log('err: ', err);
+                } else {
+                    res.send(data);
+                }
+            })
+        }
+    })
+    // res.redirect('/');
+})
 
 
 

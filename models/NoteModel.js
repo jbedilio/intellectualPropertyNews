@@ -4,11 +4,6 @@ var Schema = mongoose.Schema;
 
 //make NoteSchema a Schema
 var NoteSchema = new Schema({
-    title: {
-        type: String,
-        lowercase: true,
-        required: "please enter a title"
-    },
     message: {
         type: String,
         lowercase: true,

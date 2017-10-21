@@ -1,9 +1,18 @@
-$('#scrape').on('click', () =>{
-    event.preventDefault();
-    $.post('/article/scrape', (req, res) => {
+$('#scrape').on('click', () => {
+    $.post('/article/scrape', (err, req, res) => {
         if(err){
             console.log('err: ', err);
         }
+        res.redirect('/');
     });
-    location.reload();
+});
+
+$('#submit').on('click', () => {
+    event.preventDefault();
+    $.post('/article/note/:id', (err, req, res) => {
+        if(err){
+            console.log('err: ', err);
+        }
+        res.redirect('/');
+    });
 });

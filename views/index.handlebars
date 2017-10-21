@@ -5,7 +5,7 @@
             <li>
             <h4>{{title}}</h4>
             <p>{{summary}}</p>
-            <form action="/article/note/:id" method="POST">
+            <form action="/article/note/{{_id}}" method="POST">
                 <textarea name="req.params.id" value="{{_id}}" placeholder="enter notes here"></textarea>
                 <p>{{_id}}</p>
                 <button id="read"><a href={{link}} target="_blank">Read Article</a></button>
