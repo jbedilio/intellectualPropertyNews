@@ -63,7 +63,7 @@ router.get('/scrape', function(req, res) {
     res.redirect('/');
 });
 
-router.get('/all', (req, res) => {
+router.get('/api/all', (req, res) => {
     Article.find({}, (err, doc) => {
         if (err){
             console.log(err);
