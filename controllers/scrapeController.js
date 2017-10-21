@@ -16,15 +16,17 @@ var Note = require('./../models/NoteModel.js');
 
 router.get('/', (req, res) => {
     Article.find({}, (err, doc) => {
-        var hbsObject = {
+        // var hbsObject = {
+        //     result: doc
+        // };
+        res.render('index', {
             result: doc
-        };
-        res.render('index', hbsObject);
+        });
     });
 });
 
 //get request to scrape the nytimes website
-router.get('/scrape', function(req, res) {
+router.post('/article/scrape', function(req, res) {
     mongoose.connection.db.dropCollection('articles', function (err, result) {
         if(err){
             console.log('err: ', err);

@@ -20,6 +20,10 @@ var ArticleSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    hidden: {
+        type: Boolean,
+        default: false
+    },
     note: {
         type: Schema.Types.ObjectId,
         ref: 'Note'
