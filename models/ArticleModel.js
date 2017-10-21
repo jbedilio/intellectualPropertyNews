@@ -20,7 +20,7 @@ var ArticleSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    hidden: {
+    keep: {
         type: Boolean,
         default: false
     },

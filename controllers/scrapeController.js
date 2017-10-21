@@ -16,9 +16,13 @@ var Note = require('./../models/NoteModel.js');
 
 router.get('/', (req, res) => {
     Article.find({}, (err, doc) => {
-        res.render('index', {
-            result: doc
-        });
+        if (err) {
+            console.log(err);
+        } else {
+            res.render('index', {
+                result: doc
+            });
+        }
     });
 });
 
@@ -58,8 +62,8 @@ router.post('/article/scrape', function(req, res) {
                 }
             });
         });
+        res.redirect('/');
     });
-    res.redirect('/');
 });
 
 router.get('/api/all', (req, res) => {
@@ -72,6 +76,27 @@ router.get('/api/all', (req, res) => {
     });
 });
 
+router.post('/article/note/:id', (req, res) => {
+    var entry = new Note(req.body);
+    entry.save(function (err, doc) {
+        if (err) {
+            res.send(err);
+        } else {
+            Article.findOneAndUpdate({_id: req.params.id}, { $push: {'note': doc._id}}, {new: true}, function (err, newdoc) {
+                if (err) {
+                    console.log('err: ', err);
+                } else {
+                    res.redirect('/');//res.send(newdoc);
+                }
+            });
+        }
+    });
+});
+
+// router.post('/article/save/:id'), (req, res) => {
+//     var 
+// }
+
 router.post('/article/delete/:id', (req, res) => {
     Article.remove({_id: req.params.id}, (err, doc) => {
         if (err) {
@@ -83,7 +108,7 @@ router.post('/article/delete/:id', (req, res) => {
     res.redirect('/');
 });
 
-router.get('/article/save/:id', (req, res) => {
+router.get('/article/populate/:id', (req, res) => {
     Article.find({_id: req.params.id}, (err, doc) => {
         if (err){
             console.log(err);
@@ -99,24 +124,5 @@ router.get('/article/save/:id', (req, res) => {
         }
     });
 });
-
-router.post('/article/note/:id', (req, res) => {
-    var entry = new Note(req.body);
-    entry.save(function(err, doc){
-        if (err) {
-            res.send(err);
-        } else {
-            Article.findOneAndUpdate({_id: req.params.id}, {$push: {'note': doc._id}}, {new: true}, function(err, newdoc){
-                if (err) {
-                    console.log('err: ', err);
-                } else {
-                    res.redirect('/');//res.send(newdoc);
-                }
-            })
-        }
-    })
-})
-
-
 
 module.exports = router;
