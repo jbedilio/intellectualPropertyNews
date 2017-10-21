@@ -3,6 +3,8 @@
         <div class="col-lg-12 text-left" id="articles">
             {{#each result}}
             <h4>{{title}}</h4>
+            <p>{{summary}}</p>
+            <p>{{_id}}</p>
             <form action="/article/:id" method="POST">
                 <textarea name="req.params.id" value="{{_id}}" placeholder="enter notes here"></textarea>
                 <button type="submit" id="submit">Add Note</button>

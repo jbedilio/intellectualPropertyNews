@@ -37,14 +37,13 @@ router.get('/scrape', function(req, res) {
             //initiate a var results set to an empty object
             var result = {};
             //add each h2's text and link as propeties of a result object with dot notation
-            result.link = $(element).children('a').attr('href');
             result.title = $(element).children('a').text();
-            console.log(result);
+            result.link = $(element).children('a').attr('href');
+            result.summary = $(element).nextAll('.summary').text();
 
             //pass each result object into the Article model to construct Articles
             // console.log(result);
             var item = new Article(result);
-
             //save the item to the db
             item.save(function(err, doc) { 
                 if (err) {
