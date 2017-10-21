@@ -25,42 +25,41 @@ router.get('/', (req, res) => {
 
 //get request to scrape the nytimes website
 router.get('/scrape', function(req, res) {
-    // mongoose.connection.db.dropCollection('articles', function (err, result) {
-    //     if(err){
-    //         console.log('err: ', err);
-    //     } else {
-        //render the html from the site through request
-        request('https://www.nytimes.com', function(error, resp, html) {
-            if (error) {
-                console.log(error);
-            } else {
-            //load the html into cheerio and save it into $
-            var $ = cheerio.load(html);
-            }
-            //scrape every h2 w/ a class of story-heading
-            $('h2.story-heading').each(function(i, element) {
-                //initiate a var results set to an empty object
-                var result = {};
-                //add each h2's text and link as propeties of a result object with dot notation
-                result.title = $(this).children('a').text();
-                result.link = $(this).children('a').attr('href');
-                result.summary = $(this).nextAll('.summary').text();
-                //pass each result object into the Article model to construct Articles
-                // console.log(result);
-                var item = new Article(result);
-                //save the item to the db
-                item.save({}, function(err, doc) { 
-                    if (err) {
-                        console.log(err);
-                    } 
-                    else {
-                        console.log('Scrape complete');
-                    }
-                });
+    mongoose.connection.db.dropCollection('articles', function (err, result) {
+        if(err){
+            console.log('err: ', err);
+        }
+    });
+    //render the html from the site through request
+    request('https://www.nytimes.com', function(error, resp, html) {
+        if (error) {
+            console.log(error);
+        } else {
+        //load the html into cheerio and save it into $
+        var $ = cheerio.load(html);
+        }
+        //scrape every h2 w/ a class of story-heading
+        $('h2.story-heading').each(function(i, element) {
+            //initiate a var results set to an empty object
+            var result = {};
+            //add each h2's text and link as propeties of a result object with dot notation
+            result.title = $(this).children('a').text();
+            result.link = $(this).children('a').attr('href');
+            result.summary = $(this).nextAll('.summary').text();
+            //pass each result object into the Article model to construct Articles
+            // console.log(result);
+            var item = new Article(result);
+            //save the item to the db
+            item.save({}, function(err, doc) { 
+                if (err) {
+                    console.log(err);
+                } 
+                else {
+                    console.log('Scrape complete');
+                }
             });
         });
-        //}
-    //});
+    });
     res.redirect('/');
 });
 
