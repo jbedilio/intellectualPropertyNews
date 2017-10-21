@@ -73,7 +73,18 @@ router.get('/api/all', (req, res) => {
     });
 });
 
-router.get('/article/:id', (req, res) => {
+router.post('/article/delete/:id', (req, res) => {
+    Article.remove({_id: req.params.id}, (err, doc) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('deleted: ', req.params.id);
+        }
+    });
+    res.redirect('/');
+});
+
+router.get('/article/note/:id', (req, res) => {
     Article.find({_id: req.params.id}, (err, doc) => {
         if (err){
             console.log(err);
