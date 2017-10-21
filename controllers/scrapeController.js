@@ -102,20 +102,19 @@ router.get('/article/save/:id', (req, res) => {
 
 router.post('/article/note/:id', (req, res) => {
     var entry = new Note(req.body);
-    entry.save(function(error,doc){
+    entry.save(function(err, doc){
         if (err) {
-            console.log('err: ', err);
+            res.send(err);
         } else {
-            Article.findOneAndUpdate({'_id': req.params.id}, {$push: {'note': doc._id}}, {new: true}, function(err, data){
+            Article.findOneAndUpdate({_id: req.params.id}, {$push: {'note': doc._id}}, {new: true}, function(err, newdoc){
                 if (err) {
                     console.log('err: ', err);
                 } else {
-                    res.send(data);
+                    res.redirect('/');//res.send(newdoc);
                 }
             })
         }
     })
-    // res.redirect('/');
 })
 
 

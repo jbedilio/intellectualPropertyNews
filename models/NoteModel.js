@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 //make NoteSchema a Schema
 var NoteSchema = new Schema({
-    message: {
+    body: {
         type: String,
         lowercase: true,
-        required: "please enter a message"
+        required: "please enter a note"
     },
     created: {
         type: Date,

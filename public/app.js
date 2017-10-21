@@ -1,18 +1,46 @@
-$('#scrape').on('click', () => {
-    $.post('/article/scrape', (err, req, res) => {
-        if(err){
-            console.log('err: ', err);
-        }
-        res.redirect('/');
+$('#scrape').on('click', (event) => {
+    // event.preventDefault();
+    $.post('/article/scrape', (req, res) => {
+        console.log(res);
+        res.send();
     });
+    event.redirect('/');
 });
 
-$('#submit').on('click', () => {
-    event.preventDefault();
-    $.post('/article/note/:id', (err, req, res) => {
-        if(err){
-            console.log('err: ', err);
-        }
-        res.redirect('/');
-    });
-});
+// var $note = "";
+// $(document).on('submit', '#submit', function(event) {
+//     event.preventDefault();
+//     var thisId = $(this).attr('value');
+//         // entry.body = $(this).get('textarea[name=body]').val(),
+//         // entryurl = $note.attr('action');
+//     $.post('/article/note/' + thisId, function(req, res) {
+//         console.log(res);
+//     })
+//     // .done(function(data) {
+//     //     console.log(data);
+//     //     $('#note').empty();
+//     // });
+// });
+
+// $('#submit').on('submit', (event) => {
+//     event.preventDefault();
+//     // $note = $('#note').text().trim();
+//     $.post('/article/note/:id', (req, res) => {
+//         $note.save(function(err, doc) {
+//             if(err){
+//                 console.log('err: ', err);
+//             } else {
+//                 console.log('saved note to id: ', req.params.id);
+//             }
+//         });
+//         res.redirect('/');
+//     });
+// });
+
+// $('#save').on('click', () => {
+//     event.preventDefault();
+//     $.post('/article/save/:id', (req, res) => {
+//         if
+//     })
+
+// })
