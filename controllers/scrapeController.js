@@ -110,16 +110,16 @@ router.get('/api/saved', (req, res) => {
     })
 })
 
-router.get('/api/populated', (req, res) => {
-    Article.find({}).populate('notes').exec((error, data) => {
-        console.log(data);
-        if (error) {
-            console.log(error);
-        } else {
-            res.send(data);
-        }
-    });
-});
+// router.get('/api/populated', (req, res) => {
+//     Article.find({}).populate('notes').exec((error, data) => {
+//         console.log(data);
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             res.send(data);
+//         }
+//     });
+// });
 
 router.post('/article/note/:id', (req, res) => {
     var entry = new Note(req.body);
@@ -134,6 +134,16 @@ router.post('/article/note/:id', (req, res) => {
                     res.redirect('/');
                 }
             });
+        }
+    });
+});
+
+router.get('/article/populate/:id', (req, res) => {
+    Article.find({ _id: req.params.id }).populate('note').exec(function (error, doc) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.send(doc);
         }
     });
 });
@@ -158,32 +168,5 @@ router.post('/article/delete/:id', (req, res) => {
     });
     res.redirect('/');
 });
-
-router.get('/article/populate/:id', (req, res) => {
-    Article.find({_id: req.params.id}).populate('note').exec(function(error, doc) {
-        if (error) {
-            console.log(error);
-        } else {
-            res.send(doc);
-        }
-    });
-});
-
-// router.get('/article/populate/:id', (req, res) => {
-//     Article.find({_id: req.params.id}, (err, doc) => {
-//         if (err){
-//             console.log(err);
-//         } else {
-//             res.send(doc);
-//         }
-//     })
-//     .populate('note').exec((error, data) => {
-//         if (error){
-//             console.log(error);
-//         } else {
-//             res.send(data);
-//         }
-//     });
-// });
 
 module.exports = router;
