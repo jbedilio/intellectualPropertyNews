@@ -6,10 +6,6 @@ var cheerio = require('cheerio');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-//database config for mongoose and setting it to the var db
-mongoose.connect('mongodb://localhost/newsScraperdb', {useMongoClient: true});
-var db = mongoose.connection;
-
 //import the models
 var Article = require('./../models/ArticleModel.js');
 var Note = require('./../models/NoteModel.js');

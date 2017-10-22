@@ -25,7 +25,13 @@ app.use(bp.urlencoded({extended: true}));
 app.use(bp.json());
 
 //database config for mongoose and setting it to the var db
-mongoose.connect('mongodb://localhost/newsScraperdb');
+// mongoose.connect('mongodb://localhost/newsScraperdb');
+if (process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI)
+} else {
+    mongoose.connect("mongodb://localhost/newsScraperdb", {useMongoClient: true});
+};
+
 var db = mongoose.connection;
 
 db.on('error', (error) => {
