@@ -82,7 +82,7 @@ router.post('/article/note/:id', (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            Article.findOneAndUpdate({_id: req.params.id}, { $push: {'note': doc._id}}, {new: true}, function (err, newdoc) {
+            Article.findOneAndUpdate({_id: req.params.id}, {$push: {'note': doc._id}}, {new: true}, function (err, newdoc) {
                 if (err) {
                     console.log('err: ', err);
                 } else {
@@ -93,9 +93,15 @@ router.post('/article/note/:id', (req, res) => {
     });
 });
 
-// router.post('/article/save/:id'), (req, res) => {
-//     var 
-// }
+router.post('/article/save/:id', (req, res) => {
+    Article.findOneAndUpdate({_id: req.params.id}, {$set: {keep: true}}, function(err, data){
+        if (err) {
+            console.log('err: ', err);
+        } else {
+            res.redirect('/');
+        } 
+    });
+});
 
 router.post('/article/delete/:id', (req, res) => {
     Article.remove({_id: req.params.id}, (err, doc) => {

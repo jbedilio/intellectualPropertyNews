@@ -4,7 +4,6 @@ $('#scrape').on('click', (event) => {
         console.log(res);
         res.send();
     });
-    event.redirect('/');
 });
 
 // var $note = "";
