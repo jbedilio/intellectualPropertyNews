@@ -28,11 +28,6 @@ router.get('/', (req, res) => {
 
 //get request to scrape the nytimes website
 router.post('/article/scrape', function(req, res) {
-    // mongoose.connection.db.dropCollection('articles', function (err, result) {
-    //     if(err){
-    //         console.log('err: ', err);
-    //     }
-    // });
     //render the html from the site through request
     request('https://www.nytimes.com', function(error, resp, html) {
         if (error) {
@@ -107,6 +102,16 @@ router.get('/api/saved', (req, res) => {
         }
     })
 })
+
+router.get('/api/populated', (req, res) => {
+    Article.find({}).populate('notes', req.body).exec((error, data) => {
+        if (error) {
+            console.log(error);
+        } else {
+            res.send(data);
+        }
+    });
+});
 
 router.post('/article/note/:id', (req, res) => {
     var entry = new Note(req.body);
