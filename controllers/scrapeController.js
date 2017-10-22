@@ -98,6 +98,16 @@ router.get('/api/all', (req, res) => {
     });
 });
 
+router.get('/api/saved', (req, res) => {
+    Article.find({keep: true}, (err, doc) => {
+        if (err){
+            console.log(err);
+        } else {
+            res.send(doc);
+        }
+    })
+})
+
 router.post('/article/note/:id', (req, res) => {
     var entry = new Note(req.body);
     entry.save(function (err, doc) {
