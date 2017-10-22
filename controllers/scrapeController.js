@@ -79,6 +79,13 @@ router.post('/article/delete/all', (req, res) => {
         } else {
             console.log(result);
         }
+    });
+    mongoose.connection.db.dropCollection('notes', function (err, result) {
+        if (err) {
+            console.log('err: ', err);
+        } else {
+            console.log(result);
+        }
         res.redirect('/');
     });
 });
@@ -104,7 +111,8 @@ router.get('/api/saved', (req, res) => {
 })
 
 router.get('/api/populated', (req, res) => {
-    Article.find({}).populate('notes', req.body).exec((error, data) => {
+    Article.find({}).populate('notes').exec((error, data) => {
+        console.log(data);
         if (error) {
             console.log(error);
         } else {

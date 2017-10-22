@@ -1,8 +1,10 @@
 $('#scrape').on('click', (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     $.post('/article/scrape', (req, res) => {
         console.log(res);
-        res.send();
+    })
+    .then((data) => {
+        location.reload()
     });
 });
 
