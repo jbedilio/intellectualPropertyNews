@@ -12,6 +12,9 @@
                             <button id="read"><a href={{link}} target="_blank">Read Article</a></button>
                             <button type="submit" class="{{_id}}" id="submit">Add Note</button>
                         </form>
+                        <form action="/article/populate/{{_id}}" method="GET" id="pop">
+                            <button>Read Notes</button>
+                        </form>
                         <form action="/article/save/{{_id}}" method="POST">
                             {{#if keep}}
                                 <input type="hidden" name="keep" value="true" {{keep}}="true">

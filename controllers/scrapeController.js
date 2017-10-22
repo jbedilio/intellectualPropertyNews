@@ -131,7 +131,7 @@ router.post('/article/note/:id', (req, res) => {
                 if (err) {
                     console.log('err: ', err);
                 } else {
-                    res.redirect('/');//res.send(newdoc);
+                    res.redirect('/');
                 }
             });
         }
@@ -160,20 +160,30 @@ router.post('/article/delete/:id', (req, res) => {
 });
 
 router.get('/article/populate/:id', (req, res) => {
-    Article.find({_id: req.params.id}, (err, doc) => {
-        if (err){
-            console.log(err);
+    Article.find({_id: req.params.id}).populate('note').exec(function(error, doc) {
+        if (error) {
+            console.log(error);
         } else {
             res.send(doc);
         }
-    })
-    .populate('note').exec((error, data) => {
-        if (error){
-            console.log(error);
-        } else {
-            res.send(data);
-        }
     });
 });
+
+// router.get('/article/populate/:id', (req, res) => {
+//     Article.find({_id: req.params.id}, (err, doc) => {
+//         if (err){
+//             console.log(err);
+//         } else {
+//             res.send(doc);
+//         }
+//     })
+//     .populate('note').exec((error, data) => {
+//         if (error){
+//             console.log(error);
+//         } else {
+//             res.send(data);
+//         }
+//     });
+// });
 
 module.exports = router;
