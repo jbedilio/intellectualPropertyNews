@@ -12,7 +12,7 @@ mongoose.Promise = Promise;
 //require the models
 var Article = require('./models/ArticleModel.js');
 var Note = require('./models/NoteModel.js');
-var MONGOBD_URI_KEY = require('./mongokeys.js');
+var key = require('./mongokey.js');
 
 var PORT = process.env.MONGODB_URI || 3000;
 
@@ -30,7 +30,7 @@ app.use(bp.json());
 //database config for mongoose and setting it to the var db
 // mongoose.connect('mongodb://localhost/newsScraperdb');
 if (process.env.MONGODB_URI) {
-    mongoose.connect(MONGODB_URI_KEY);
+    mongoose.connect(key);
 } else {
     mongoose.connect("mongodb://localhost/newsScraperdb", {useMongoClient: true});
 };
