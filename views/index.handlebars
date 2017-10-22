@@ -13,12 +13,12 @@
                             <button type="submit" class="{{_id}}" id="submit">Add Note</button>
                         </form>
                         <form action="/article/save/{{_id}}" method="POST">
-                            {{!-- {{#if keep}} --}}
-                                {{!-- <input type="hidden" name="keep" value="1" keep="true"> --}}
-                            {{!-- {{else}} --}}
-                                {{!-- <input type="hidden" name="keep"value="0" keep="0"> --}}
-                            {{!-- {{/if}} --}}
-                                <button id="save">Save Article</button>
+                            {{#if keep}}
+                                <input type="hidden" name="keep" value="true" {{keep}}="true">
+                            {{else}}
+                                <input type="hidden" name="keep"value="false" {{keep}}="false">
+                            {{/if}}
+                                <button id="save">{{#if keep}}Article Saved{{else}}Save Article{{/if}}</button>
                         </form>
                         <form action="/article/delete/{{_id}}" method="POST" id="form">
                             <button>Delete Article</button>

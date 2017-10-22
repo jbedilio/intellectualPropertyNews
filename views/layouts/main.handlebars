@@ -25,14 +25,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                    </div>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-12 text-center">
                         <form action="/article/scrape" method="POST">
                             <button id="scrape" class="btn btn-primary">Scrape Some News</button>
                         </form>
-                    </div>
-                    <div class="col-md-4">
+                        <form action="/article/delete/unsaved" method="POST">
+                            <button id="deleteUnsaved" class="btn btn-success">Delete Unsaved News</button>
+                        </form>
+                        <form action="/article/delete/all" method="POST">
+                            <button id="deleteAll" class="btn btn-danger">Delete All the News</button>
+                        </form>
                     </div>
                 </div>
                 </div class="row">
@@ -43,7 +45,7 @@
                         |
                         <a href="https://github.com/jbedilio/newsScraper">GitHub Repo</a>
                         |
-                        <a href="/articles/save/:id">Saved Articles</a>
+                        <a href="/articles/save">Saved Articles</a>
                     </div>
                     <div class="col-sm-3">
                     </div>

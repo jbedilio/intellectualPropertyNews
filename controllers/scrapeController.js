@@ -28,11 +28,11 @@ router.get('/', (req, res) => {
 
 //get request to scrape the nytimes website
 router.post('/article/scrape', function(req, res) {
-    mongoose.connection.db.dropCollection('articles', function (err, result) {
-        if(err){
-            console.log('err: ', err);
-        }
-    });
+    // mongoose.connection.db.dropCollection('articles', function (err, result) {
+    //     if(err){
+    //         console.log('err: ', err);
+    //     }
+    // });
     //render the html from the site through request
     request('https://www.nytimes.com', function(error, resp, html) {
         if (error) {
@@ -62,6 +62,28 @@ router.post('/article/scrape', function(req, res) {
                 }
             });
         });
+        res.redirect('/');
+    });
+});
+
+router.post('/article/delete/unsaved', (req, res) => {
+    Article.remove({keep: false}, (err, data) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(data);
+        }
+        res.redirect('/');
+    });   
+});
+
+router.post('/article/delete/all', (req, res) => {
+    mongoose.connection.db.dropCollection('articles', function (err, result) {
+        if (err) {
+            console.log('err: ', err);
+        } else {
+            console.log(result);
+        }
         res.redirect('/');
     });
 });
