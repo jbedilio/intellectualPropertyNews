@@ -12,7 +12,6 @@ mongoose.Promise = Promise;
 //require the models
 var Article = require('./models/ArticleModel.js');
 var Note = require('./models/NoteModel.js');
-// var keys = require('./mongokey.js');
 
 var PORT = process.env.PORT || 3000;
 
