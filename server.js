@@ -14,7 +14,7 @@ var Article = require('./models/ArticleModel.js');
 var Note = require('./models/NoteModel.js');
 var keys = require('./mongokey.js');
 
-var PORT = process.env.MONGODB_URI || 3000;
+var PORT = process.env.PORT || 3000;
 
 //grabbing an instance of express
 var app = express();
