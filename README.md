@@ -11,3 +11,6 @@
 
                 Reading a Note
 ![newsrepo4](https://user-images.githubusercontent.com/28810487/32115556-4c36942a-bb15-11e7-944c-df38197e37e7.gif)
+
+                Saving a Note
+![newsrepo5](https://user-images.githubusercontent.com/28810487/32115702-d26ab35a-bb15-11e7-93d2-2a7f1b6a9db6.gif)
