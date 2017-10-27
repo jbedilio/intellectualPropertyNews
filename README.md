@@ -17,3 +17,6 @@
 
                 Deleting an Article
 ![newsrepo6](https://user-images.githubusercontent.com/28810487/32115849-6207b68e-bb16-11e7-94ca-ba458faa9113.gif)
+
+                API Route to All Articles
+![newsrepo7](https://user-images.githubusercontent.com/28810487/32116014-f0a8c590-bb16-11e7-8bf6-e7e72bcc62f0.gif)
