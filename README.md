@@ -23,3 +23,6 @@
 
                 API Route to All Saved Articles
 ![newsrepo8](https://user-images.githubusercontent.com/28810487/32116177-8f3321e2-bb17-11e7-9312-fca91f391c39.gif)
+
+                Deleting Unsaved Articles and Saved Articles
+![newsrepo9](https://user-images.githubusercontent.com/28810487/32116364-5b86a44e-bb18-11e7-82aa-d98ff2d84ca7.gif)
