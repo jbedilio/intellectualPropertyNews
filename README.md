@@ -20,3 +20,6 @@
 
                 API Route to All Articles
 ![newsrepo7](https://user-images.githubusercontent.com/28810487/32116014-f0a8c590-bb16-11e7-8bf6-e7e72bcc62f0.gif)
+
+                API Route to All Saved Articles
+![newsrepo8](https://user-images.githubusercontent.com/28810487/32116177-8f3321e2-bb17-11e7-9312-fca91f391c39.gif)
