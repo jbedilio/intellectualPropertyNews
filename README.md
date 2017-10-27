@@ -8,3 +8,6 @@
 
                 Making a Note
 ![newsrepo3](https://user-images.githubusercontent.com/28810487/32115386-9ca0d52a-bb14-11e7-9ad1-833c7a8f0df4.gif)
+
+                Reading a Note
+![newsrepo4](https://user-images.githubusercontent.com/28810487/32115556-4c36942a-bb15-11e7-944c-df38197e37e7.gif)
