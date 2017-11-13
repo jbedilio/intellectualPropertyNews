@@ -1,4 +1,4 @@
-# newsScraper
+# Intellectual Property News
   newsScraper is built on Node.js and uses an Express.js server to serve up the routes.  The client facing view is rendered in html via the Handlebars.js templating engine.  The npm package cheerio provides a way to traverse the DOM and scrape specific parts of the site.  MongoDB provides the persistant data storage.  And, Mongoose models the actual data being stored in Mongo.  The result is a full stack web scraping application that scrapes New York Times news articles.
 
                 Scraping Some New York Times News
