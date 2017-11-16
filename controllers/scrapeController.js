@@ -106,10 +106,7 @@ router.get('/api/saved', (req, res) => {
     })
 })
 
-// router.get('/api/populated', (req, res) => {
-//     Article.find({}).populate('notes').exec((error, data) => {
-//         console.log(data);
-//         if (error) {
+
 //             console.log(error);
 //         } else {
 //             res.send(data);
