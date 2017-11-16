@@ -135,7 +135,7 @@ router.post('/article/note/:id', (req, res) => {
 });
 
 router.get('/article/populate/:id', (req, res) => {
-    Article.find({ _id: req.params.id }).populate('note').exec(function (error, doc) {
+    Article.find({_id: req.params.id}).populate('note').exec(function (error, doc) {
         if (error) {
             console.log(error);
         } else {
