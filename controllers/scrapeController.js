@@ -106,14 +106,6 @@ router.get('/api/saved', (req, res) => {
     })
 })
 
-
-//             console.log(error);
-//         } else {
-//             res.send(data);
-//         }
-//     });
-// });
-
 router.post('/article/note/:id', (req, res) => {
     var entry = new Note(req.body);
     entry.save(function (err, doc) {
