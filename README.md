@@ -1,5 +1,5 @@
 # Intellectual Property News
-  Intellectual Property News is built on Node.js and uses an Express.js server to serve up the routes.  The client facing view is rendered in html via the Handlebars.js templating engine.  The npm package cheerio provides a way to traverse the DOM and scrape specific parts of the site.  MongoDB provides the persistant data storage.  And, Mongoose models the actual data being stored in Mongo.  The result is a full stack web scraping application that scrapes New York Times news articles deployed on Heroku at https://thawing-harbor-39384.herokuapp.com/
+  Intellectual Property News is built on Node.js and uses an Express.js server to serve up the routes.  The client facing view is rendered in html via the Handlebars.js templating engine.  The NPM package cheerio provides a way to traverse the DOM and scrape specific parts of the site.  MongoDB provides the persistent data storage.  And, Mongoose models the actual data being stored in Mongo.  The result is a full stack web scraping application that scrapes New York Times news articles deployed on Heroku at https://thawing-harbor-39384.herokuapp.com/
 
                 Scraping Some New York Times News
 ![newsrepo1](https://user-images.githubusercontent.com/28810487/32114574-e9c38f58-bb11-11e7-9a69-df7bfd7b3305.gif)
